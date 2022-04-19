@@ -10,6 +10,30 @@ Esie Bot is a multipurpose discord bot created with python with the intention of
   /status - Returns the latency of the bot and the status of the esie.nl website
 ```
 
+#### Source Code
+
+```
+  /sourcecode - Returns the Esie source code
+```
+
+#### WGN
+
+```
+  /wgn - Returns discord invite link for the WGN Discord server.
+```
+
+#### Set Social
+
+```
+  /setsocial - Opens a form to fill in your socialmedia usernames
+```
+
+#### Help
+
+```
+  /help - Returns a list of commands
+```
+
 #### Git user
 
 ```
@@ -19,12 +43,6 @@ Esie Bot is a multipurpose discord bot created with python with the intention of
 | Parameter  | Type     | Description     |
 | :--------- | :------- | :-------------- |
 | `username` | `string` | Github username |
-
-#### Source Code
-
-```
-  /sourcecode - Returns the Esie source code
-```
 
 #### Marry
 
@@ -46,24 +64,6 @@ Esie Bot is a multipurpose discord bot created with python with the intention of
 | :-------- | :------- | :--------------- |
 | `user`    | `string` | Discord username |
 
-#### WGN
-
-```
-  /wgn - Returns discord invite link for the WGN Discord server.
-```
-
-#### Set Social
-
-```
-  /setsocial - Opens a form to fill in your socialmedia usernames
-```
-
-#### Help
-
-```
-  /help - Returns a list of commands
-```
-
 #### Social
 
 ```
@@ -80,4 +80,4 @@ Esie Bot is a multipurpose discord bot created with python with the intention of
 
 ---
 
-<h4 align="center">Made with ❤️ by Chinou</h4>
+<h4 align="center">Made with ❤️ by Chinou & Teun</h4>
