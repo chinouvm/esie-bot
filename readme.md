@@ -40,7 +40,7 @@ Esie Bot is a multipurpose discord bot created with python with the intention of
   /git user {username} - Returns information about a certain github user
 ```
 
-| Parameter  | Type     | Description     |
+| Args       | Type     | Description     |
 | :--------- | :------- | :-------------- |
 | `username` | `string` | Github username |
 
