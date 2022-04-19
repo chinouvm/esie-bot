@@ -1,4 +1,4 @@
-from time import time
+from datetime import datetime
 from config import settings
 import discord
 from discord.ext import commands, tasks
@@ -27,7 +27,7 @@ class MyBot(commands.Bot):
         bot.remove_command("help")
 
     async def on_ready(self):
-        print(f"{self.user} Initialised.")
+        print(f"{self.user} Initialised {datetime.now()}")
 
 
 bot = MyBot()

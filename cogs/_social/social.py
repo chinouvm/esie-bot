@@ -25,7 +25,7 @@ class Social(commands.Cog, name="Socials"):
         description="get socials",
     )
     async def social(self, interaction: discord.Interaction, member: discord.Member):
-        id = str(member)
+        id = str(member.id)
         print(id)
         userData = db.collection("users").document(id).get()
         if userData.exists:
@@ -34,22 +34,27 @@ class Social(commands.Cog, name="Socials"):
             instagram = userData.to_dict().get("insta")
             spotify = userData.to_dict().get("spotify")
             snaplink = userData.to_dict().get("snaplink")
+            github = userData.to_dict().get("github")
 
             view = View()
-            embed = DefaultEmbed(title=f"Socials van {id}", color=discord.Color.green())
-            if snaplink != None:
+            embed = DefaultEmbed(title=f"Socials van {member.name}", color=discord.Color.green())
+            if snaplink != None and len(snaplink) > 10:
                 buttonSnap = Button(label="snap", style=discord.ButtonStyle.link, url=f"{snaplink}")
                 view.add_item(buttonSnap)
-            if spotify != None:
+            if spotify != None and len(spotify) > 3:
                 buttonSpotify = Button(label="spotify", style=discord.ButtonStyle.link, url=f"https://open.spotify.com/user/{spotify}/")
                 view.add_item(buttonSpotify)
-                embed.add_field(name="Spotify", value=f"{spotify}", inline=True)
+                embed.add_field(name="Spotify", value=f"`{spotify}`", inline=False)
+            if github != None and len(github) > 3: 
+                buttonSpotify = Button(label="github", style=discord.ButtonStyle.link, url=f"https://github.com/{github}")
+                view.add_item(buttonSpotify)
+                embed.add_field(name="Github", value=f"`{github}`", inline=False)
 
             buttonInsta = Button(label="insta", style=discord.ButtonStyle.link, url=f"https://www.instagram.com/{instagram}/")
             view.add_item(buttonInsta)
 
-            embed.add_field(name="Instagram", value=f"{instagram}", inline=True)
-            embed.add_field(name="Snapchat", value=f"{snapchat}", inline=True)
+            embed.add_field(name="Instagram", value=f"`{instagram}`", inline=False)
+            embed.add_field(name="Snapchat", value=f"`{snapchat}`", inline=False)
             embed.set_thumbnail(url=f"{member.avatar}")
 
             await interaction.response.send_message(view=view, embed=embed)
