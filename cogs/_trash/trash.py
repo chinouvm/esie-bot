@@ -15,7 +15,7 @@ class Trash(commands.Cog):
 
     @app_commands.command(name="trash", description="call a user trash")
     async def trash(self, interaction: discord.Interaction, member: discord.Member):
-        search_terms = ["L", "Trash", "You're Bad", "You're Stupid", "Fat guy", "Shitpost"]
+        search_terms = ["L", "Trash", "You're Bad", "You're Stupid", "Shitpost"]
         search_term = choice(search_terms)
         async with aiohttp.ClientSession() as session:
             async with session.get("https://g.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search_term, settings.TENORKEY, 20)) as response:
