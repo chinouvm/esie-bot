@@ -19,7 +19,7 @@ class Marry(commands.Cog, name="Marry"):
         modal = MarryModal()
         await interaction.response.send_modal(modal)
         await modal.wait()
-        embed = DefaultEmbed(title=f"💍**{interaction.user.display_name}**💍 has proposed to you.", color=discord.Color.red())
+        embed = DefaultEmbed(title=f"💍**{interaction.user.display_name}**💍 has proposed to you.", color=discord.Color.from_rgb(67, 157, 254))
         embed.add_field(name="❤️ Reason ❤️", value=f"{modal.reason.value}", inline=True)
         await member.send(embed=embed)
 

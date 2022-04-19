@@ -37,7 +37,7 @@ class Social(commands.Cog, name="Socials"):
             github = userData.to_dict().get("github")
 
             view = View()
-            embed = DefaultEmbed(title=f"Socials van {member.name}", color=discord.Color.green())
+            embed = DefaultEmbed(title=f"Socials van {member.name}", color=discord.Color.from_rgb(67, 157, 254))
             if snaplink != None and len(snaplink) > 10:
                 buttonSnap = Button(label="snap", style=discord.ButtonStyle.link, url=f"{snaplink}")
                 view.add_item(buttonSnap)
@@ -45,7 +45,7 @@ class Social(commands.Cog, name="Socials"):
                 buttonSpotify = Button(label="spotify", style=discord.ButtonStyle.link, url=f"https://open.spotify.com/user/{spotify}/")
                 view.add_item(buttonSpotify)
                 embed.add_field(name="Spotify", value=f"`{spotify}`", inline=False)
-            if github != None and len(github) > 3: 
+            if github != None and len(github) > 3:
                 buttonSpotify = Button(label="github", style=discord.ButtonStyle.link, url=f"https://github.com/{github}")
                 view.add_item(buttonSpotify)
                 embed.add_field(name="Github", value=f"`{github}`", inline=False)

@@ -16,7 +16,7 @@ class WGN(commands.Cog):
         view = View()
         buttonSource = Button(emoji="❤️", style=discord.ButtonStyle.link, url="https://discord.gg/YJk68J5qsJ")
         view.add_item(buttonSource)
-        embed = DefaultEmbed(title="W.G.N Discord")
+        embed = DefaultEmbed(title="W.G.N Discord", color=discord.Color.from_rgb(67, 157, 254))
         embed.description = f"{interaction.user} Invited you to join W.G.N Discord"
         await interaction.response.send_message(view=view, embed=embed)
 
