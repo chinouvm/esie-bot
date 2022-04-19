@@ -12,7 +12,7 @@ class Help(commands.Cog):
 
     @app_commands.command(name="help", description="pls help")
     async def help(self, interaction: discord.Interaction):
-        embed = DefaultEmbed(title="Help Menu", color=discord.Color.random())
+        embed = DefaultEmbed(title="Help Menu", color=discord.Color.from_rgb(67, 157, 254))
         embed.add_field(name="Source code", value="Use `sourcecode` command to get Esie source code", inline=True)
         embed.add_field(name="W.G.N", value="Use `wgn` command to get W.G.N discord invite link", inline=True)
         embed.add_field(name="Help", value="Use `help` command to get this message", inline=True)

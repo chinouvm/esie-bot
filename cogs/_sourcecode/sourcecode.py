@@ -16,7 +16,7 @@ class SourceCode(commands.Cog):
         view = View()
         buttonSource = Button(emoji="🗂️", style=discord.ButtonStyle.link, url="https://github.com/chinouvm/esie-bot/")
         view.add_item(buttonSource)
-        embed = DefaultEmbed(title="Source code of Esie Bot")
+        embed = DefaultEmbed(title="Source code of Esie Bot", color=discord.Color.from_rgb(67, 157, 254))
         await interaction.response.send_message(view=view, embed=embed)
 
 
