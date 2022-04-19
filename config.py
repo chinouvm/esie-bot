@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     TESTSERVERID: int
     SERVERID: int
     GITHUB_TOKEN: str
+    TENORKEY: str
 
     class Config:
         env_file = ".env"
