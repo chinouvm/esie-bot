@@ -50,7 +50,7 @@ Esie Bot is a multipurpose discord bot created with python with the intention of
   /marry {user} - Send  marriage proposal to a user
 ```
 
-| Parameter | Type     | Description      |
+| Args      | Type     | Description      |
 | :-------- | :------- | :--------------- |
 | `user`    | `string` | Discord username |
 
@@ -60,7 +60,7 @@ Esie Bot is a multipurpose discord bot created with python with the intention of
   /trash {user} - Let the other user know what you think of them
 ```
 
-| Parameter | Type     | Description      |
+| Args      | Type     | Description      |
 | :-------- | :------- | :--------------- |
 | `user`    | `string` | Discord username |
 
@@ -70,7 +70,7 @@ Esie Bot is a multipurpose discord bot created with python with the intention of
   /social {user} - Returns the social media usernames of an other user
 ```
 
-| Parameter | Type     | Description      |
+| Args      | Type     | Description      |
 | :-------- | :------- | :--------------- |
 | `user`    | `string` | Discord username |
 
