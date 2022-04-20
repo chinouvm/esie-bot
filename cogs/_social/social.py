@@ -1,6 +1,6 @@
 from discord.ui import Button, View
 import discord
-from discord import app_commands
+from discord import Embed, app_commands
 from discord.ext import commands
 
 from classes.embed import DefaultEmbed
@@ -9,22 +9,24 @@ from database import db
 from config import settings
 
 
-class Social(commands.Cog, name="Socials"):
+class Social(commands.Cog, app_commands.Group, name="social"):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
+        super().__init__()
 
     @app_commands.command(
-        name="setsocial",
+        name="set",
         description="set your own socials",
     )
-    async def setsocial(self, interaction: discord.Interaction):
+    async def set(self, interaction: discord.Interaction):
         await interaction.response.send_modal(SetSocialModal())
 
     @app_commands.command(
-        name="social",
+        name="get",
         description="get socials",
     )
-    async def social(self, interaction: discord.Interaction, member: discord.Member):
+    @app_commands.describe(member="The username of the member you want to get socials from")
+    async def get(self, interaction: discord.Interaction, member: discord.Member):
         id = str(member.id)
         print(id)
         userData = db.collection("users").document(id).get()
@@ -62,6 +64,18 @@ class Social(commands.Cog, name="Socials"):
             embed = DefaultEmbed(title=f"Did not find {member.name} socials", color=discord.Color.red())
             await interaction.response.send_message(embed=embed)
 
+    @app_commands.command(
+        name="update",
+        description="update your socials",
+    )
+    async def update(self, interaction: discord.Interaction):
+        await interaction.response.send_message(embed= Embed(title=f"Updating {interaction.user.name} socials", color=discord.Color.from_rgb(67, 157, 254)))
 
 async def setup(bot: commands.Bot):
-    await bot.add_cog(Social(bot), guilds=[discord.Object(id=settings.SERVERID), discord.Object(id=settings.TESTSERVERID)])
+    await bot.add_cog(
+        Social(bot),
+        guilds=[
+            discord.Object(id=settings.TESTSERVERID),
+            discord.Object(id=settings.SERVERID),
+        ],
+    )
