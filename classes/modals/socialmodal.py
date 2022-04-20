@@ -13,7 +13,21 @@ class SetSocialModal(Modal, title="⚜️Set your socials⚜️"):
 
     async def on_submit(self, interaction: discord.Interaction):
         id = str(interaction.user.id)
-        data = {"snapchat": self.snap.value, "insta": self.insta.value, "spotify": self.spotify.value, "snaplink": self.snaplink.value, "github": self.github.value}
+        data = {
+            "snapchat": self.snap.value,
+            "insta": self.insta.value,
+            "spotify": self.spotify.value,
+            "snaplink": self.snaplink.value,
+            "github": self.github.value,
+        }
         db.collection("users").document(id).set(data)
         embed = DefaultEmbed(title="Succesfully set your socials", color=discord.Color.green())
+        await interaction.response.send_message(embed=embed)
+
+
+class UpdateSocialModal(Modal, title="⚜️Update your socials⚜️"):
+    updated = TextInput(label="Enter a new value", style=discord.TextStyle.short, required=True)
+
+    async def on_submit(self, interaction: discord.Interaction):
+        embed = DefaultEmbed(title="Succesfully updated your socials", color=discord.Color.green())
         await interaction.response.send_message(embed=embed)

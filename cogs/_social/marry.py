@@ -25,7 +25,7 @@ class Marry(commands.Cog, name="Marry"):
         embed.add_field(name="❤️ Reason ❤️", value=f"{modal.reason.value}", inline=True)
 
         view = MarryView()
-        await member.send(embed=embed, view= view)
+        await member.send(embed=embed, view=view)
 
 
 async def setup(bot: commands.Bot):

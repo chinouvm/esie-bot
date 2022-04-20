@@ -1,6 +1,8 @@
 from discord.ui import Button, View
 import discord
 from discord import Embed, app_commands
+
+from classes.views.updatesocialview import UpdateSocialView
 from discord.ext import commands
 
 from classes.embed import DefaultEmbed
@@ -69,7 +71,15 @@ class Social(commands.Cog, app_commands.Group, name="social"):
         description="update your socials",
     )
     async def update(self, interaction: discord.Interaction):
-        await interaction.response.send_message(embed= Embed(title=f"Updating {interaction.user.name} socials", color=discord.Color.from_rgb(67, 157, 254)))
+
+        await interaction.user.send(
+            view=UpdateSocialView(), embed=Embed(title=f"Select a social platform to update", color=discord.Color.from_rgb(67, 157, 254))
+        )
+
+        await interaction.response.send_message(
+            embed=Embed(title=f"{interaction.user.display_name} recieved a update message ", color=discord.Color.from_rgb(67, 157, 254))
+        )
+
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(
