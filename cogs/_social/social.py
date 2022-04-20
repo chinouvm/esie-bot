@@ -76,10 +76,6 @@ class Social(commands.Cog, app_commands.Group, name="social"):
             view=UpdateSocialView(), embed=Embed(title=f"Select a social platform to update", color=discord.Color.from_rgb(67, 157, 254))
         )
 
-        await interaction.response.send_message(
-            embed=Embed(title=f"{interaction.user.display_name} recieved a update message ", color=discord.Color.from_rgb(67, 157, 254))
-        )
-
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(

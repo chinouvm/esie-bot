@@ -8,7 +8,7 @@ from database import db
 
 async def update_social(id, social, value):
     data = {social: value}
-    db.collection("users").document(id).set(data)
+    db.collection("users").document(id).update(data)
 
 
 class UpdateSocialView(View):
