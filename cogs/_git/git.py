@@ -1,4 +1,5 @@
-from operator import mod
+from datetime import datetime
+from datetime import timedelta
 import aiohttp
 import discord
 from classes.embed import DefaultEmbed
@@ -51,10 +52,22 @@ class Git(commands.Cog, app_commands.Group, name="git"):
         name="issue",
         description="Creates an issue on github",
     )
+    @app_commands.checks.cooldown(1, 60, key=lambda i: (i.guild.id, i.user.id))
     async def issue(self, interaction: discord.Interaction):
         await interaction.response.send_message(
             embed=Embed(title="Select one of the options", color=discord.Color.from_rgb(67, 157, 254)), view=PostIssueView()
         )
+
+    @issue.error
+    async def command_error(self, interaction: discord.Interaction, error: app_commands.AppCommandError):
+        if isinstance(error, app_commands.CommandOnCooldown):
+            timeRemaining = str(timedelta(seconds=int(error.retry_after)))
+            embed = DefaultEmbed(
+                title=f"⛔ Error!",
+                description=f"Please wait {timeRemaining} seconds before executing this command again!",
+                color=discord.Color.from_rgb(255, 0, 0),
+            )
+            await interaction.response.send_message(embed=embed)
 
 
 async def setup(bot: commands.Bot):

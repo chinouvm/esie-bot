@@ -22,7 +22,9 @@ class Trash(commands.Cog):
                 data = json.loads(await response.text())
                 randomNumber = randint(1, len(data["results"]))
                 gif = data["results"][randomNumber]["media"][0]["gif"]["url"]
-                embed = DefaultEmbed(title=f"{interaction.user.display_name} called {member.name} trash", color=discord.Color.from_rgb(67, 157, 254))
+                embed = DefaultEmbed(
+                    title=f"{interaction.user.display_name} called {member.name} trash", color=discord.Color.from_rgb(67, 157, 254)
+                )
                 embed.set_image(url=gif)
                 await interaction.response.send_message(embed=embed)
                 await session.close()
@@ -30,5 +32,6 @@ class Trash(commands.Cog):
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(
-        Trash(bot), guilds=[discord.Object(id=settings.SERVERID), discord.Object(id=settings.TESTSERVERID), discord.Object(id=settings.JIMSERVERID)]
+        Trash(bot),
+        guilds=[discord.Object(id=settings.SERVERID), discord.Object(id=settings.TESTSERVERID), discord.Object(id=settings.JIMSERVERID)],
     )

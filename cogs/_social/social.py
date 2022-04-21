@@ -4,6 +4,7 @@ from discord import Embed, app_commands
 
 from classes.views.updatesocialview import UpdateSocialView
 from discord.ext import commands
+from datetime import timedelta
 
 from classes.embed import DefaultEmbed
 from classes.modals.socialmodal import SetSocialModal
@@ -20,14 +21,27 @@ class Social(commands.Cog, app_commands.Group, name="social"):
         name="set",
         description="set your own socials",
     )
+    @app_commands.checks.cooldown(1, 60, key=lambda i: (i.guild.id, i.user.id))
     async def set(self, interaction: discord.Interaction):
         await interaction.response.send_modal(SetSocialModal())
+
+    @set.error
+    async def commandSet_error(self, interaction: discord.Interaction, error: app_commands.AppCommandError):
+        if isinstance(error, app_commands.CommandOnCooldown):
+            timeRemaining = str(timedelta(seconds=int(error.retry_after)))
+            embed = DefaultEmbed(
+                title=f"⛔ Error!",
+                description=f"Please wait {timeRemaining} seconds before executing this command again!",
+                color=discord.Color.from_rgb(255, 0, 0),
+            )
+            await interaction.response.send_message(embed=embed)
 
     @app_commands.command(
         name="get",
         description="get socials",
     )
     @app_commands.describe(member="The username of the member you want to get socials from")
+    @app_commands.checks.cooldown(1, 20, key=lambda i: (i.guild.id, i.user.id))
     async def get(self, interaction: discord.Interaction, member: discord.Member):
         id = str(member.id)
         print(id)
@@ -63,13 +77,25 @@ class Social(commands.Cog, app_commands.Group, name="social"):
 
             await interaction.response.send_message(view=view, embed=embed)
         else:
-            embed = DefaultEmbed(title=f"Did not find {member.name} socials", color=discord.Color.red())
+            embed = DefaultEmbed(title=f"Did not find {member.name} socials", color=discord.Color.from_rgb(255, 0, 0))
+            await interaction.response.send_message(embed=embed)
+
+    @get.error
+    async def commandGet_error(self, interaction: discord.Interaction, error: app_commands.AppCommandError):
+        if isinstance(error, app_commands.CommandOnCooldown):
+            timeRemaining = str(timedelta(seconds=int(error.retry_after)))
+            embed = DefaultEmbed(
+                title=f"⛔ Error!",
+                description=f"Please wait {timeRemaining} seconds before executing this command again!",
+                color=discord.Color.from_rgb(255, 0, 0),
+            )
             await interaction.response.send_message(embed=embed)
 
     @app_commands.command(
         name="update",
         description="update your socials",
     )
+    @app_commands.checks.cooldown(1, 60, key=lambda i: (i.guild.id, i.user.id))
     async def update(self, interaction: discord.Interaction):
 
         await interaction.user.send(
@@ -77,6 +103,17 @@ class Social(commands.Cog, app_commands.Group, name="social"):
         )
 
         await interaction.response.send_message(embed=Embed(title=f"Updating socials", color=discord.Color.from_rgb(67, 157, 254)))
+
+    @update.error
+    async def commandUpdate_error(self, interaction: discord.Interaction, error: app_commands.AppCommandError):
+        if isinstance(error, app_commands.CommandOnCooldown):
+            timeRemaining = str(timedelta(seconds=int(error.retry_after)))
+            embed = DefaultEmbed(
+                title=f"⛔ Error!",
+                description=f"Please wait {timeRemaining} seconds before executing this command again!",
+                color=discord.Color.from_rgb(255, 0, 0),
+            )
+            await interaction.response.send_message(embed=embed)
 
 
 async def setup(bot: commands.Bot):
