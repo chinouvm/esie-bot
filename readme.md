@@ -1,6 +1,6 @@
 # Esie Bot - a multipurpose discordbot
 
-Esie Bot is a multipurpose discord bot created with python with the intention of learning more about discord.py and python in general. <br /> <br />
+Esie Bot is a multipurpose discord bot created with python with the intention of learning more about discord.py and python in general. <br /> <br /> <br />
 
 ## Commands
 
@@ -50,9 +50,9 @@ Esie Bot is a multipurpose discord bot created with python with the intention of
   /marry {user} - Send  marriage proposal to a user
 ```
 
-| Args      | Type     | Description      |
-| :-------- | :------- | :--------------- |
-| `user`    | `string` | Discord username |
+| Args   | Type     | Description      |
+| :----- | :------- | :--------------- |
+| `user` | `string` | Discord username |
 
 #### Trash
 
@@ -60,9 +60,9 @@ Esie Bot is a multipurpose discord bot created with python with the intention of
   /trash {user} - Let the other user know what you think of them
 ```
 
-| Args      | Type     | Description      |
-| :-------- | :------- | :--------------- |
-| `user`    | `string` | Discord username |
+| Args   | Type     | Description      |
+| :----- | :------- | :--------------- |
+| `user` | `string` | Discord username |
 
 #### Social
 
@@ -70,9 +70,9 @@ Esie Bot is a multipurpose discord bot created with python with the intention of
   /social {user} - Returns the social media usernames of an other user
 ```
 
-| Args      | Type     | Description      |
-| :-------- | :------- | :--------------- |
-| `user`    | `string` | Discord username |
+| Args   | Type     | Description      |
+| :----- | :------- | :--------------- |
+| `user` | `string` | Discord username |
 
 <br />
 <br />
