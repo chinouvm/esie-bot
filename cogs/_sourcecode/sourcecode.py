@@ -4,7 +4,7 @@ from discord.ext import commands
 from discord.ui import View, Button
 
 from classes.embed import DefaultEmbed
-from config import settings
+from guildlist import guildlist
 
 
 class SourceCode(commands.Cog):
@@ -21,7 +21,4 @@ class SourceCode(commands.Cog):
 
 
 async def setup(bot: commands.Bot):
-    await bot.add_cog(
-        SourceCode(bot),
-        guilds=[discord.Object(id=settings.SERVERID), discord.Object(id=settings.TESTSERVERID), discord.Object(id=settings.JIMSERVERID)],
-    )
+    await bot.add_cog(SourceCode(bot), guilds=guildlist)

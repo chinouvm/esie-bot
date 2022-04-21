@@ -1,9 +1,9 @@
 import aiohttp
 import discord
-from config import settings
 from discord import app_commands
 from discord.ext import commands
 from classes.embed import DefaultEmbed
+from guildlist import guildlist
 
 
 class Status(commands.Cog):
@@ -29,6 +29,4 @@ class Status(commands.Cog):
 
 
 async def setup(bot: commands.Bot):
-    await bot.add_cog(
-        Status(bot), guilds=[discord.Object(id=settings.TESTSERVERID), discord.Object(id=settings.SERVERID), discord.Object(id=settings.JIMSERVERID)]
-    )
+    await bot.add_cog(Status(bot), guilds=guildlist)

@@ -4,7 +4,7 @@ from discord.ext import commands
 from discord.ui import View, Button
 
 from classes.embed import DefaultEmbed
-from config import settings
+from guildlist import guildlist
 
 
 class WGN(commands.Cog):
@@ -22,6 +22,4 @@ class WGN(commands.Cog):
 
 
 async def setup(bot: commands.Bot):
-    await bot.add_cog(
-        WGN(bot), guilds=[discord.Object(id=settings.SERVERID), discord.Object(id=settings.TESTSERVERID), discord.Object(id=settings.JIMSERVERID)]
-    )
+    await bot.add_cog(WGN(bot), guilds=guildlist)

@@ -9,7 +9,7 @@ class MyBot(commands.Bot):
         super().__init__(
             command_prefix="!",
             intents=discord.Intents.all(),
-            application_id="965233241600700457",
+            application_id="966745674941087745",
             activity=discord.Activity(type=discord.ActivityType.watching, name="www.esie.nl"),
         )
 
@@ -22,9 +22,8 @@ class MyBot(commands.Bot):
         await self.load_extension(f"cogs._sourcecode.sourcecode")
         await self.load_extension(f"cogs._trash.trash")
         await self.load_extension(f"cogs._help.help")
-        await bot.tree.sync(guild=discord.Object(id=settings.TESTSERVERID))
-        await bot.tree.sync(guild=discord.Object(id=settings.SERVERID))
-        # await bot.tree.sync(guild=discord.Object(id=settings.JIMSERVERID))
+        await self.load_extension(f"cogs._karo.karo")
+        await bot.tree.sync(guild=discord.Object(id=860153924899176478))
 
         bot.remove_command("help")
 

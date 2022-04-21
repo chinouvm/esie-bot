@@ -9,7 +9,7 @@ from datetime import timedelta
 from classes.embed import DefaultEmbed
 from classes.modals.socialmodal import SetSocialModal
 from database import db
-from config import settings
+from guildlist import guildlist
 
 
 class Social(commands.Cog, app_commands.Group, name="social"):
@@ -117,6 +117,4 @@ class Social(commands.Cog, app_commands.Group, name="social"):
 
 
 async def setup(bot: commands.Bot):
-    await bot.add_cog(
-        Social(bot), guilds=[discord.Object(id=settings.TESTSERVERID), discord.Object(id=settings.SERVERID), discord.Object(id=settings.JIMSERVERID)]
-    )
+    await bot.add_cog(Social(bot), guilds=guildlist)
