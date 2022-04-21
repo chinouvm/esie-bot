@@ -1,7 +1,7 @@
 from datetime import datetime
 from config import settings
 import discord
-from discord.ext import commands, tasks
+from discord.ext import commands
 
 
 class MyBot(commands.Bot):
