@@ -22,6 +22,7 @@ class MyBot(commands.Bot):
         await self.load_extension(f"cogs._sourcecode.sourcecode")
         await self.load_extension(f"cogs._trash.trash")
         await self.load_extension(f"cogs._help.help")
+        await self.load_extension(f"cogs._karo.karo")
         await bot.tree.sync(guild=discord.Object(id=860153924899176478))
 
         bot.remove_command("help")
