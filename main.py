@@ -24,6 +24,8 @@ class MyBot(commands.Bot):
         await self.load_extension(f"cogs._help.help")
         await bot.tree.sync(guild=discord.Object(id=settings.TESTSERVERID))
         await bot.tree.sync(guild=discord.Object(id=settings.SERVERID))
+        await bot.tree.sync(guild=discord.Object(id=settings.JIMSERVERID))
+
         bot.remove_command("help")
 
     async def on_ready(self):

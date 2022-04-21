@@ -29,4 +29,5 @@ class Marry(commands.Cog, name="Marry"):
 
 
 async def setup(bot: commands.Bot):
-    await bot.add_cog(Marry(bot), guilds=[discord.Object(id=settings.SERVERID), discord.Object(id=settings.TESTSERVERID)])
+    await bot.add_cog(Marry(bot), guilds=[discord.Object(id=settings.SERVERID), discord.Object(id=settings.TESTSERVERID),
+            discord.Object(id=settings.JIMSERVERID)])

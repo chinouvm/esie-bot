@@ -5,6 +5,7 @@ class Settings(BaseSettings):
     TOKEN: str
     TESTSERVERID: int
     SERVERID: int
+    JIMSERVERID: int
     GITHUB_TOKEN: str
     TENORKEY: str
 

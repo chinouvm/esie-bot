@@ -52,5 +52,6 @@ async def setup(bot: commands.Bot):
         guilds=[
             discord.Object(id=settings.TESTSERVERID),
             discord.Object(id=settings.SERVERID),
+            discord.Object(id=settings.JIMSERVERID)
         ],
     )

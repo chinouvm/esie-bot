@@ -81,9 +81,5 @@ class Social(commands.Cog, app_commands.Group, name="social"):
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(
-        Social(bot),
-        guilds=[
-            discord.Object(id=settings.TESTSERVERID),
-            discord.Object(id=settings.SERVERID),
-        ],
+        Social(bot), guilds=[discord.Object(id=settings.TESTSERVERID), discord.Object(id=settings.SERVERID), discord.Object(id=settings.JIMSERVERID)]
     )
