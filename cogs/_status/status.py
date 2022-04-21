@@ -14,7 +14,7 @@ class Status(commands.Cog):
         name="status",
         description="Returns the latency of the bot and the status of the website",
     )
-    async def ping(self, interaction: discord.Interaction):
+    async def status(self, interaction: discord.Interaction):
         embed = DefaultEmbed(title=f"Status", color=discord.Color.from_rgb(67, 157, 254))
         embed.add_field(name="Ping:", value=f"{round(self.bot.latency * 1000)}ms", inline=True)
         async with aiohttp.ClientSession() as session:
