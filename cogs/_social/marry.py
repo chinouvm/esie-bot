@@ -7,6 +7,7 @@ from classes.embed import DefaultEmbed
 from classes.modals.marrymodal import MarryModal
 from classes.views.marryview import MarryView
 from config import settings
+from guildlist import guildlist
 
 
 class Marry(commands.Cog, name="Marry"):
@@ -29,5 +30,4 @@ class Marry(commands.Cog, name="Marry"):
 
 
 async def setup(bot: commands.Bot):
-    await bot.add_cog(Marry(bot), guilds=[discord.Object(id=settings.SERVERID), discord.Object(id=settings.TESTSERVERID),
-            discord.Object(id=settings.JIMSERVERID)])
+    await bot.add_cog(Marry(bot), guilds=guildlist)
