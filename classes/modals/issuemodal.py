@@ -1,11 +1,9 @@
-import aiohttp
 import discord
 from discord.ui import Modal, TextInput
 from classes.embed import DefaultEmbed
-from config import settings
 
 
-class PostIssue(Modal, title="Github Issue"):
+class PostIssue(Modal, title="❌ Github Issue ❌"):
     issuetitle = TextInput(label="Title", style=discord.TextStyle.short, required=True)
     issuebody = TextInput(label="Issue", style=discord.TextStyle.long, required=True)
 

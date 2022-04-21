@@ -35,3 +35,6 @@ class UpdateSocialView(View):
             await update_social(str(interaction.user.id), "snaplink", str(modal.updated.value))
         elif select.values[0] == "github":
             await update_social(str(interaction.user.id), "github", str(modal.updated.value))
+
+        select.disabled = True
+        await interaction.message.edit(view=self)
