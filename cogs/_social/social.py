@@ -9,7 +9,6 @@ from datetime import timedelta
 from classes.embed import DefaultEmbed
 from classes.modals.socialmodal import SetSocialModal
 from database import db
-from config import settings
 from guildlist import guildlist
 
 

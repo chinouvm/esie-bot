@@ -2,7 +2,6 @@ from datetime import datetime
 from config import settings
 import discord
 from discord.ext import commands
-from guildlist import guildlist
 
 
 class MyBot(commands.Bot):

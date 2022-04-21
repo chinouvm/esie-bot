@@ -6,7 +6,6 @@ from discord.ext import commands
 from classes.embed import DefaultEmbed
 from classes.modals.marrymodal import MarryModal
 from classes.views.marryview import MarryView
-from config import settings
 from guildlist import guildlist
 
 
