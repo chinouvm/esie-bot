@@ -29,4 +29,6 @@ class Trash(commands.Cog):
 
 
 async def setup(bot: commands.Bot):
-    await bot.add_cog(Trash(bot), guilds=[discord.Object(id=settings.SERVERID), discord.Object(id=settings.TESTSERVERID)])
+    await bot.add_cog(
+        Trash(bot), guilds=[discord.Object(id=settings.SERVERID), discord.Object(id=settings.TESTSERVERID), discord.Object(id=settings.JIMSERVERID)]
+    )

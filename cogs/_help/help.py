@@ -17,8 +17,7 @@ class Help(commands.Cog):
         embed.add_field(name="W.G.N", value="Use `wgn` command to get W.G.N discord invite link", inline=True)
         embed.add_field(name="Help", value="Use `help` command to get this message", inline=True)
         embed.add_field(name="Marry", value="Use `marry` command to get a proposal", inline=True)
-        embed.add_field(name="Set Social", value="Use `setsocial` command to set a social profile", inline=True)
-        embed.add_field(name="Social", value="Use `social` command to get a social profile", inline=True)
+        embed.add_field(name="Social", value="Use `social` command to get social commands", inline=True)
         embed.add_field(name="Trash", value="Use `trash` command to call a user trash", inline=True)
         embed.add_field(name="Status", value="Use `status` command see the latency of the bot and the status of the website", inline=True)
         embed.add_field(name="Git User", value="Use `git user` command to retrieve information about a github user", inline=True)
@@ -26,4 +25,5 @@ class Help(commands.Cog):
 
 
 async def setup(bot: commands.Bot):
-    await bot.add_cog(Help(bot), guilds=[discord.Object(id=settings.SERVERID), discord.Object(id=settings.TESTSERVERID)])
+    await bot.add_cog(Help(bot), guilds=[discord.Object(id=settings.SERVERID), discord.Object(id=settings.TESTSERVERID),
+            discord.Object(id=settings.JIMSERVERID)])
