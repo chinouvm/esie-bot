@@ -1,6 +1,7 @@
 import aiohttp
 import discord
 from classes.embed import DefaultEmbed
+from classes.modals.issuemodal import PostIssue
 from config import settings
 from discord import app_commands
 from discord.ext import commands
@@ -15,6 +16,19 @@ class User:
             async with session.get(f"https://api.github.com/users/{username}", headers=headers) as resp:
                 body = await resp.json()
                 return body
+
+
+class IssueReq:
+    async def postIssue(title, body, user):
+        headers = {"Authorization": f"token {settings.GITHUB_TOKEN}", "Accept": "application/vnd.github.v3+json"}
+        data = {"title": title, "body": body + f"\n\n\n**Issued by:** {user}", "labels": ["bug"]}
+        async with aiohttp.ClientSession() as session:
+            async with session.post(
+                f"https://api.github.com/repos/chinouvm/esie-bot/issues",
+                headers=headers,
+                json=data,
+            ):
+                pass
 
 
 class Git(commands.Cog, app_commands.Group, name="git"):
@@ -45,13 +59,19 @@ class Git(commands.Cog, app_commands.Group, name="git"):
             embed = DefaultEmbed(title=f"⛔ Error!", description=f"Ongeldige gebruikersnaam!", color=discord.Color.from_rgb(255, 0, 0))
             await interaction.response.send_message(embed=embed)
 
+    @app_commands.command(
+        name="issue",
+        description="Creates an issue on github",
+    )
+    async def issue(self, interaction: discord.Interaction):
+        modal = PostIssue()
+        await interaction.response.send_modal(modal)
+        await modal.wait()
+        await IssueReq.postIssue(modal.issuetitle.value, modal.issuebody.value, interaction.user)
+
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(
         Git(bot),
-        guilds=[
-            discord.Object(id=settings.TESTSERVERID),
-            discord.Object(id=settings.SERVERID),
-            discord.Object(id=settings.JIMSERVERID)
-        ],
+        guilds=[discord.Object(id=settings.TESTSERVERID), discord.Object(id=settings.SERVERID), discord.Object(id=settings.JIMSERVERID)],
     )
