@@ -21,7 +21,7 @@ class SetSocialModal(Modal, title="⚜️Set your socials⚜️"):
             "github": self.github.value,
         }
         db.collection("users").document(id).set(data)
-        embed = DefaultEmbed(title="Succesfully set your socials", color=discord.Color.green())
+        embed = DefaultEmbed(title="Succesfully set your socials", color=discord.Color.from_rgb(67, 157, 254))
         await interaction.response.send_message(embed=embed)
 
 
@@ -29,5 +29,5 @@ class UpdateSocialModal(Modal, title="⚜️Update your socials⚜️"):
     updated = TextInput(label="Enter a new value", style=discord.TextStyle.short, required=True)
 
     async def on_submit(self, interaction: discord.Interaction):
-        embed = DefaultEmbed(title="Succesfully updated your socials", color=discord.Color.green())
+        embed = DefaultEmbed(title="Succesfully updated your socials", color=discord.Color.from_rgb(67, 157, 254))
         await interaction.response.send_message(embed=embed)
