@@ -1,4 +1,3 @@
-import imp
 import discord
 from discord.ui import View
 from discord import SelectOption
