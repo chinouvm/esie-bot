@@ -3,7 +3,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-from classes.embed import DefaultEmbed
+from classes.embeds.embed import DefaultEmbed
 from classes.modals.marrymodal import MarryModal
 from classes.views.marryview import MarryView
 from guildlist import guildlist

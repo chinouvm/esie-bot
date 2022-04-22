@@ -7,7 +7,7 @@ from database import db
 
 async def update_social(id, social, value):
     data = {social: value}
-    db.collection("users").document(id).update(data)
+    await db.collection("users").document(id).update(data)
 
 
 class UpdateSocialView(View):
@@ -28,7 +28,7 @@ class UpdateSocialView(View):
         if select.values[0] == "insta":
             await update_social(str(interaction.user.id), "insta", str(modal.updated.value))
         elif select.values[0] == "snap":
-            await update_social(str(interaction.user.id), "snap", str(modal.updated.value))
+            await update_social(str(interaction.user.id), "snapchat", str(modal.updated.value))
         elif select.values[0] == "spotify":
             await update_social(str(interaction.user.id), "spotify", str(modal.updated.value))
         elif select.values[0] == "snaplink":

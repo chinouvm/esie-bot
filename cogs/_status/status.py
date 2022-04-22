@@ -2,7 +2,7 @@ import aiohttp
 import discord
 from discord import app_commands
 from discord.ext import commands
-from classes.embed import DefaultEmbed
+from classes.embeds.embed import DefaultEmbed
 from guildlist import guildlist
 
 

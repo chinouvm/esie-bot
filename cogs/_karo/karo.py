@@ -3,7 +3,7 @@ from discord import app_commands
 from discord.ext import commands
 from guildlist import guildlist
 
-from classes.embed import DefaultEmbed
+from classes.embeds.embed import DefaultEmbed
 
 
 class Karo(commands.Cog):
@@ -11,15 +11,12 @@ class Karo(commands.Cog):
         self.bot = bot
 
     @app_commands.command(name="karo", description="Use Karo powers to turn the bot off")
-    @app_commands.checks.has_role(966020348669726720)
     async def karo(self, interaction: discord.Interaction):
-        await interaction.response.send_message("Shutting down...")
-        print("Shutting down...")
-        await self.bot.close()
-
-    @karo.error
-    async def commandKaro_error(self, interaction: discord.Interaction, error: app_commands.AppCommandError):
-        if isinstance(error, app_commands.MissingRole):
+        if interaction.user.id == 356188517635981322 or interaction.user.id == 213715321742295040:
+            await interaction.response.send_message("Shutting down...")
+            print("Shutting down...")
+            await self.bot.close()
+        else:
             embed = DefaultEmbed(
                 title=f"⛔ Error!",
                 description=f"You are not allowed to use this command!",

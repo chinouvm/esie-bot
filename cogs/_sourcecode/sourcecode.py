@@ -3,7 +3,7 @@ from discord import app_commands
 from discord.ext import commands
 from discord.ui import View, Button
 
-from classes.embed import DefaultEmbed
+from classes.embeds.embed import DefaultEmbed
 from guildlist import guildlist
 
 

@@ -1,4 +1,3 @@
-from traceback import print_tb
 from discord.ui import Button, View
 import discord
 from discord import Embed, app_commands
@@ -7,7 +6,7 @@ from classes.views.updatesocialview import UpdateSocialView
 from discord.ext import commands
 from datetime import timedelta
 
-from classes.embed import DefaultEmbed
+from classes.embeds.embed import DefaultEmbed
 from classes.modals.socialmodal import SetSocialModal
 from database import db
 from guildlist import guildlist
@@ -45,8 +44,7 @@ class Social(commands.Cog, app_commands.Group, name="social"):
     @app_commands.checks.cooldown(1, 20, key=lambda i: (i.guild.id, i.user.id))
     async def get(self, interaction: discord.Interaction, member: discord.Member):
         id = str(member.id)
-        print(id)
-        userData = db.collection("users").document(id).get()
+        userData = await db.collection("users").document(id).get()
         if userData.exists:
 
             snapchat = userData.to_dict().get("snapchat")
@@ -59,11 +57,11 @@ class Social(commands.Cog, app_commands.Group, name="social"):
             embed = DefaultEmbed(title=f"Socials van {member.name}", color=discord.Color.from_rgb(67, 157, 254))
             if snaplink != None and len(snaplink) > 10:
                 buttonSnap = Button(label="snap", style=discord.ButtonStyle.link, url=f"{snaplink}")
-            view.add_item(buttonSnap)
+                view.add_item(buttonSnap)
             if spotify != None and len(spotify) > 3:
                 buttonSpotify = Button(label="spotify", style=discord.ButtonStyle.link, url=f"https://open.spotify.com/user/{spotify}/")
                 view.add_item(buttonSpotify)
-            embed.add_field(name="Spotify", value=f"`{spotify}`", inline=False)
+                embed.add_field(name="Spotify", value=f"`{spotify}`", inline=False)
             if github != None and len(github) > 3:
                 buttonSpotify = Button(label="github", style=discord.ButtonStyle.link, url=f"https://github.com/{github}")
                 view.add_item(buttonSpotify)
@@ -76,7 +74,7 @@ class Social(commands.Cog, app_commands.Group, name="social"):
             embed.add_field(name="Snapchat", value=f"`{snapchat}`", inline=False)
             embed.set_thumbnail(url=f"{member.avatar}")
 
-            await interaction.response.send_message(view=view, embed=embed)
+            await interaction.response.send_message(embed=embed, view=view)
         else:
             embed = DefaultEmbed(title=f"Did not find {member.name} socials", color=discord.Color.from_rgb(255, 0, 0))
             await interaction.response.send_message(embed=embed)

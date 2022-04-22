@@ -1,6 +1,6 @@
 import discord
 from discord.ui import Modal, TextInput
-from classes.embed import DefaultEmbed
+from classes.embeds.embed import DefaultEmbed
 from database import db
 
 
@@ -20,7 +20,7 @@ class SetSocialModal(Modal, title="⚜️Set your socials⚜️"):
             "snaplink": self.snaplink.value,
             "github": self.github.value,
         }
-        db.collection("users").document(id).set(data)
+        await db.collection("users").document(id).set(data)
         embed = DefaultEmbed(title="Succesfully set your socials", color=discord.Color.from_rgb(67, 157, 254))
         await interaction.response.send_message(embed=embed)
 
