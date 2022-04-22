@@ -1,3 +1,4 @@
+from traceback import print_tb
 from discord.ui import Button, View
 import discord
 from discord import Embed, app_commands
@@ -58,11 +59,11 @@ class Social(commands.Cog, app_commands.Group, name="social"):
             embed = DefaultEmbed(title=f"Socials van {member.name}", color=discord.Color.from_rgb(67, 157, 254))
             if snaplink != None and len(snaplink) > 10:
                 buttonSnap = Button(label="snap", style=discord.ButtonStyle.link, url=f"{snaplink}")
-                view.add_item(buttonSnap)
+            view.add_item(buttonSnap)
             if spotify != None and len(spotify) > 3:
                 buttonSpotify = Button(label="spotify", style=discord.ButtonStyle.link, url=f"https://open.spotify.com/user/{spotify}/")
                 view.add_item(buttonSpotify)
-                embed.add_field(name="Spotify", value=f"`{spotify}`", inline=False)
+            embed.add_field(name="Spotify", value=f"`{spotify}`", inline=False)
             if github != None and len(github) > 3:
                 buttonSpotify = Button(label="github", style=discord.ButtonStyle.link, url=f"https://github.com/{github}")
                 view.add_item(buttonSpotify)
