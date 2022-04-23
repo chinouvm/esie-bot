@@ -1,7 +1,7 @@
 from datetime import timedelta
 import aiohttp
 import discord
-from classes.embed import DefaultEmbed
+from classes.embeds.embed import DefaultEmbed
 from classes.views.issueview import PostIssueView
 from config import settings
 from discord import Embed, app_commands

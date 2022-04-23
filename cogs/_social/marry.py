@@ -3,7 +3,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-from classes.embed import DefaultEmbed
+from classes.embeds.embed import DefaultEmbed
 from classes.modals.marrymodal import MarryModal
 from classes.views.marryview import MarryView
 from guildlist import guildlist
@@ -22,7 +22,7 @@ class Marry(commands.Cog, name="Marry"):
         await interaction.response.send_modal(modal)
         await modal.wait()
         embed = DefaultEmbed(title=f"💍**{interaction.user.display_name}**💍 has proposed to you.", color=discord.Color.from_rgb(67, 157, 254))
-        embed.add_field(name="❤️ Reason ❤️", value=f"{modal.reason.value}", inline=True)
+        embed.add_field(name="Reason:", value=f"{modal.reason.value}", inline=True)
 
         view = MarryView()
         await member.send(embed=embed, view=view)

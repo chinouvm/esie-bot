@@ -6,7 +6,7 @@ from classes.views.updatesocialview import UpdateSocialView
 from discord.ext import commands
 from datetime import timedelta
 
-from classes.embed import DefaultEmbed
+from classes.embeds.embed import DefaultEmbed
 from classes.modals.socialmodal import SetSocialModal
 from database import db
 from guildlist import guildlist
@@ -44,7 +44,6 @@ class Social(commands.Cog, app_commands.Group, name="social"):
     @app_commands.checks.cooldown(1, 20, key=lambda i: (i.guild.id, i.user.id))
     async def get(self, interaction: discord.Interaction, member: discord.Member):
         id = str(member.id)
-        print(id)
         userData = db.collection("users").document(id).get()
         if userData.exists:
 

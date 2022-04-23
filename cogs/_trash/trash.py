@@ -5,7 +5,7 @@ from discord import app_commands
 from discord.ext import commands
 import json
 
-from classes.embed import DefaultEmbed
+from classes.embeds.embed import DefaultEmbed
 from config import settings
 from guildlist import guildlist
 

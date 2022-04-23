@@ -1,6 +1,6 @@
 import discord
 from discord.ui import Modal, TextInput
-from classes.embed import DefaultEmbed
+from classes.embeds.embed import DefaultEmbed
 
 
 class PostIssue(Modal, title="Github Issue"):

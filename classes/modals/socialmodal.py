@@ -1,6 +1,6 @@
 import discord
 from discord.ui import Modal, TextInput
-from classes.embed import DefaultEmbed
+from classes.embeds.embed import DefaultEmbed
 from database import db
 
 
