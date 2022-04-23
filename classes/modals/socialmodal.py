@@ -20,7 +20,7 @@ class SetSocialModal(Modal, title="⚜️Set your socials⚜️"):
             "snaplink": self.snaplink.value,
             "github": self.github.value,
         }
-        await db.collection("users").document(id).set(data)
+        db.collection("users").document(id).set(data)
         embed = DefaultEmbed(title="Succesfully set your socials", color=discord.Color.from_rgb(67, 157, 254))
         await interaction.response.send_message(embed=embed)
 

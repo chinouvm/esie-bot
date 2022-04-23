@@ -44,7 +44,7 @@ class Social(commands.Cog, app_commands.Group, name="social"):
     @app_commands.checks.cooldown(1, 20, key=lambda i: (i.guild.id, i.user.id))
     async def get(self, interaction: discord.Interaction, member: discord.Member):
         id = str(member.id)
-        userData = await db.collection("users").document(id).get()
+        userData = db.collection("users").document(id).get()
         if userData.exists:
 
             snapchat = userData.to_dict().get("snapchat")
@@ -74,7 +74,7 @@ class Social(commands.Cog, app_commands.Group, name="social"):
             embed.add_field(name="Snapchat", value=f"`{snapchat}`", inline=False)
             embed.set_thumbnail(url=f"{member.avatar}")
 
-            await interaction.response.send_message(embed=embed, view=view)
+            await interaction.response.send_message(view=view, embed=embed)
         else:
             embed = DefaultEmbed(title=f"Did not find {member.name} socials", color=discord.Color.from_rgb(255, 0, 0))
             await interaction.response.send_message(embed=embed)

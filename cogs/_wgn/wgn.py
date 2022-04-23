@@ -1,9 +1,13 @@
+import json
+from random import choice, randint
+import aiohttp
 import discord
 from discord import app_commands
 from discord.ext import commands
 from discord.ui import View, Button
 
 from classes.embeds.embed import DefaultEmbed
+from config import Settings
 from guildlist import guildlist
 
 
