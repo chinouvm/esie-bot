@@ -3,7 +3,7 @@ from pydantic import BaseSettings
 
 class Settings(BaseSettings):
     TOKEN: str
-    GITHUB_TOKEN: str
+    GITTOKEN: str
     TENORKEY: str
 
     class Config:

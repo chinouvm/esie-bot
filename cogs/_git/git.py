@@ -13,7 +13,7 @@ from guildlist import guildlist
 class User:
     async def getUser(username):
         """Get user from github api"""
-        headers = {"Authorization": f"token {settings.GITHUB_TOKEN}", "Accept": "application/vnd.github.v3+json"}
+        headers = {"Authorization": f"token {settings.GITTOKEN}", "Accept": "application/vnd.github.v3+json"}
         async with aiohttp.ClientSession() as session:
             async with session.get(f"https://api.github.com/users/{username}", headers=headers) as resp:
                 body = await resp.json()
