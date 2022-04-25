@@ -19,13 +19,13 @@ jobs:
 
       - uses: actions/checkout@v3
       - name: Decrypt json key
-        run: echo ${{secrets.SUDOPW}} | sudo ./.github/scripts/decrypt_secret.sh
+        run: echo ${{secrets.SUDOPW}} | sudo -S ./.github/scripts/decrypt_secret.sh
         env:
           FIREBASEKEY: ${{secrets.FIREBASEKEY}}
 
       - uses: actions/checkout@v3
       - name: Decrypt env key
-        run: echo ${{secrets.SUDOPW}} | sudo ./.github/scripts/decrypt_env.sh
+        run: echo ${{secrets.SUDOPW}} | sudo -S ./.github/scripts/decrypt_env.sh
         env:
           ENVKEYS: ${{secrets.ENVKEYS}}
 
