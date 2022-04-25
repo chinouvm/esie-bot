@@ -2,3 +2,4 @@ aiohttp==3.8.1
 discord.py @ git+https://github.com/Rapptz/discord.py@5456c0cae944f5e0dffb5de19cf18175e0d73011
 firebase-admin==5.2.0
 pydantic==1.9.0
+python-dotenv==0.20.0
