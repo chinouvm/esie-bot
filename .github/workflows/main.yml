@@ -13,5 +13,5 @@ jobs:
       - name: Build & Push Docker Image
         run: |
           echo "${{secrets.DOCKERPW}}" | docker login -u "chinouvm" --password-stdin
-          docker image build -t chinouvm/esiebot:v1 .
+          docker image build -t chinouvm/esiebot:latest .
           docker push chinouvm/esiebot:v1
