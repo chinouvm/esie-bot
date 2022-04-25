@@ -4,5 +4,5 @@
 # --batch to prevent interactive command
 # --yes to assume "yes" for questions
 cd secrets
-gpg --quiet --batch --yes --decrypt --passphrase="$FIREBASEKEY" \
+gpg --quiet --batch --yes --decrypt --passphrase="$DKEY" \
 --output key.json key.json.gpg
