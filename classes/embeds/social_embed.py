@@ -4,7 +4,7 @@ from classes.embeds.embed import DefaultEmbed
 class SocialEmbed(DefaultEmbed):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.title = "🔧Social🔧"
+        self.title = "Social"
         self.add_field(
             name="**/social set**", value="`/social set` can be used to set your socials. (snapchat, instagram, github, spotify)", inline=False
         )
