@@ -14,20 +14,17 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Push Docker Image
-        uses: actions/checkout@v3
-
       - uses: actions/checkout@v3
       - name: Decrypt json key
         run: echo ${{secrets.SUDOPW}} | sudo -S ./.github/scripts/decrypt_secret.sh
         env:
-          DKEY: ${{secrets.DKEY}}
+          DKEY1: ${{secrets.DKEY}}
 
       - uses: actions/checkout@v3
       - name: Decrypt env key
         run: echo ${{secrets.SUDOPW}} | sudo -S ./.github/scripts/decrypt_env.sh
         env:
-          DKEY: ${{secrets.DKEY}}
+          DKEY2: ${{secrets.DKEY}}
 
       - name: Setup Docker buildx
         uses: docker/setup-buildx-action@79abd3f86f79a9d68a23c75a09a9a85889262adf

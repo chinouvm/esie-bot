@@ -4,5 +4,5 @@
 # --batch to prevent interactive command
 # --yes to assume "yes" for questions
 cd secrets
-gpg --quiet --batch --yes --decrypt --passphrase="$DKEY" \
+gpg --quiet --batch --yes --decrypt --passphrase="$DKEY1" \
 --output .env .env.gpg
