@@ -1,7 +1,7 @@
 FROM python:3
 FROM gorialis/discord.py
 
-RUN mdir -p /usr/src/esie-bot
+RUN mkdir -p /usr/src/esie-bot
 WORKDIR /usr/src/esie-bot
 
 COPY . .
