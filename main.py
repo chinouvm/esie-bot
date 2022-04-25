@@ -23,6 +23,7 @@ class MyBot(commands.Bot):
         await self.load_extension(f"cogs._help.help")
         await self.load_extension(f"cogs._karo.karo")
         await self.load_extension(f"cogs._gif.gif")
+        await self.load_extension(f"cogs._programming.programming")
         await bot.tree.sync(guild=discord.Object(id=860153924899176478))
         await bot.tree.sync(guild=discord.Object(id=959010133273370664))
 
