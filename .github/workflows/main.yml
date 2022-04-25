@@ -1,0 +1,16 @@
+name: Esie Bot
+
+on:
+  push: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build & Push Image
+        run: |
+          echo "${{secrets.DOCKERPW}}" | docker login -u "chinouvm" --password-stdin
+          docker image build -t chinouvm/esiebot:v1 .
+          docker push chinouvm/esiebot:v1
