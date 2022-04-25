@@ -17,7 +17,6 @@ class MyBot(commands.Bot):
         await self.load_extension(f"cogs._status.status")
         await self.load_extension(f"cogs._git.git")
         await self.load_extension(f"cogs._social.social")
-        await self.load_extension(f"cogs._social.marry")
         await self.load_extension(f"cogs._wgn.wgn")
         await self.load_extension(f"cogs._sourcecode.sourcecode")
         await self.load_extension(f"cogs._trash.trash")
