@@ -8,7 +8,6 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  DKEY: ${{ secrets.DKEY }}
 
 jobs:
   build:
@@ -18,10 +17,14 @@ jobs:
       - uses: actions/checkout@v3
       - name: Decrypt json key
         run: echo ${{secrets.SUDOPW}} | sudo -S ./.github/scripts/decrypt_secret.sh $DKEY
+        env:
+          DKEY: ${{secrets.SUDOPW}}
 
       - uses: actions/checkout@v3
       - name: Decrypt env key
         run: echo ${{secrets.SUDOPW}} | sudo -S ./.github/scripts/decrypt_env.sh $DKEY
+        env:
+          DKEY: ${{secrets.SUDOPW}}
 
       - name: Setup Docker buildx
         uses: docker/setup-buildx-action@79abd3f86f79a9d68a23c75a09a9a85889262adf

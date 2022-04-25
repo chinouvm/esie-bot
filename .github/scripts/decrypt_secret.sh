@@ -4,7 +4,5 @@
 # --batch to prevent interactive command
 # --yes to assume "yes" for questions
 cd secrets
-KEY=$DKEY
-echo $KEY
-gpg --quiet --batch --yes --decrypt --passphrase=$KEY \
+gpg --quiet --batch --yes --decrypt --passphrase="$DKEY" \
 --output key.json key.json.gpg
