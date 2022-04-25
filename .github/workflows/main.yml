@@ -17,13 +17,14 @@ jobs:
       - name: Push Docker Image
         uses: actions/checkout@v3
 
-      - name: Decrypt json key
       - uses: actions/checkout@v3
+      - name: Decrypt json key
         run: ./.github/scripts/decrypt_secret.sh
         env:
           FIREBASEKEY: ${{secrets.FIREBASEKEY}}
-      - name: Decrypt env key
+
       - uses: actions/checkout@v3
+      - name: Decrypt env key
         run: ./.github/scripts/decrypt_env.sh
         env:
           ENVKEYS: ${{secrets.ENVKEYS}}
