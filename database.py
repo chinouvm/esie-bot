@@ -4,7 +4,7 @@ from firebase_admin import firestore
 
 
 try:
-    cred = credentials.Certificate("./key.json")
+    cred = credentials.Certificate("./secrets/key.json")
 except ValueError:
     print("No key.json found, using default credentials")
 except IOError:

@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     TENORKEY: str
 
     class Config:
-        env_file = ".env"
+        env_file = "./secrets/.env"
 
 
 settings = Settings()
