@@ -5,5 +5,5 @@
 # --yes to assume "yes" for questions
 cd secrets
 KEY=$DKEY
-gpg --quiet --batch --yes --decrypt --passphrase=KEY \
+gpg --quiet --batch --yes --pinentry-mode loopback --decrypt --passphrase=KEY \
 --output key.json key.json.gpg
