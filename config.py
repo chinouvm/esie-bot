@@ -3,14 +3,14 @@ from pydantic import BaseSettings
 
 class Settings(BaseSettings):
     TOKEN: str
-    ID: int
     DEVTOKEN: str
-    DEVID: int
     GITTOKEN: str
     TENORKEY: str
     REDDIT_CLIENTID: str
     REDDIT_CLIENTSECRET: str
     REDDIT_USERAGENT: str
+    APPID: int
+    DEVID: int
 
     class Config:
         env_file = ".env"
