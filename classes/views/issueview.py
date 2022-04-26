@@ -8,7 +8,7 @@ from config import settings
 
 class IssueReq:
     async def postIssue(title, body, user, label):
-        headers = {"Authorization": f"token {settings.GITHUB_TOKEN}", "Accept": "application/vnd.github.v3+json"}
+        headers = {"Authorization": f"token {settings.GITTOKEN}", "Accept": "application/vnd.github.v3+json"}
         data = {"title": title, "body": body + f"\n\n\n**Issued by:** {user}", "labels": [f"{label}"]}
         async with aiohttp.ClientSession() as session:
             async with session.post(
