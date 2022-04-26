@@ -3,6 +3,9 @@ from pydantic import BaseSettings
 
 class Settings(BaseSettings):
     TOKEN: str
+    ID: int
+    DEVTOKEN: str
+    DEVID: int
     GITTOKEN: str
     TENORKEY: str
     REDDIT_CLIENTID: str
