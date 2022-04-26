@@ -9,7 +9,7 @@ class MyBot(commands.Bot):
         super().__init__(
             command_prefix="!",
             intents=discord.Intents.all(),
-            application_id="966745674941087745",
+            application_id=settings.DEVID,
             activity=discord.Activity(type=discord.ActivityType.watching, name="www.esie.nl"),
         )
 
@@ -34,4 +34,4 @@ class MyBot(commands.Bot):
 
 
 bot = MyBot()
-bot.run(settings.TOKEN)
+bot.run(settings.DEVTOKEN)
