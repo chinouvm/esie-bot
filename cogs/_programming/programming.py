@@ -46,7 +46,7 @@ class Programming(commands.Cog, app_commands.Group, name="programming"):
                 description=f"Please wait {timeRemaining} seconds before executing this command again!",
                 color=discord.Color.from_rgb(255, 0, 0),
             )
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
 
 
 async def setup(bot: commands.Bot):

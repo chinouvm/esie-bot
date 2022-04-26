@@ -22,7 +22,7 @@ class SetSocialModal(Modal, title="⚜️Set your socials⚜️"):
         }
         db.collection("users").document(id).set(data)
         embed = DefaultEmbed(title="Succesfully set your socials", color=discord.Color.from_rgb(67, 157, 254))
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message(embed=embed, ephemeral=True)
 
 
 class UpdateSocialModal(Modal, title="⚜️Update your socials⚜️"):
@@ -30,4 +30,4 @@ class UpdateSocialModal(Modal, title="⚜️Update your socials⚜️"):
 
     async def on_submit(self, interaction: discord.Interaction):
         embed = DefaultEmbed(title="Succesfully updated your socials", color=discord.Color.from_rgb(67, 157, 254))
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message(embed=embed, ephemeral=True)

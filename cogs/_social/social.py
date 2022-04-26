@@ -23,7 +23,7 @@ class Social(commands.Cog, app_commands.Group, name="social"):
     )
     @app_commands.checks.cooldown(1, 60, key=lambda i: (i.guild.id, i.user.id))
     async def set(self, interaction: discord.Interaction):
-        await interaction.response.send_modal(SetSocialModal())
+        await interaction.response.send_modal(SetSocialModal(), ephemeral=True)
 
     @set.error
     async def commandSet_error(self, interaction: discord.Interaction, error: app_commands.AppCommandError):
@@ -34,7 +34,7 @@ class Social(commands.Cog, app_commands.Group, name="social"):
                 description=f"Please wait {timeRemaining} seconds before executing this command again!",
                 color=discord.Color.from_rgb(255, 0, 0),
             )
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
 
     @app_commands.command(
         name="get",
@@ -77,7 +77,7 @@ class Social(commands.Cog, app_commands.Group, name="social"):
             await interaction.response.send_message(view=view, embed=embed)
         else:
             embed = DefaultEmbed(title=f"Did not find {member.name} socials", color=discord.Color.from_rgb(255, 0, 0))
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
 
     @get.error
     async def commandGet_error(self, interaction: discord.Interaction, error: app_commands.AppCommandError):
@@ -88,7 +88,7 @@ class Social(commands.Cog, app_commands.Group, name="social"):
                 description=f"Please wait {timeRemaining} seconds before executing this command again!",
                 color=discord.Color.from_rgb(255, 0, 0),
             )
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
 
     @app_commands.command(
         name="update",
@@ -101,7 +101,7 @@ class Social(commands.Cog, app_commands.Group, name="social"):
             view=UpdateSocialView(), embed=Embed(title=f"Select a social platform to update", color=discord.Color.from_rgb(67, 157, 254))
         )
 
-        await interaction.response.send_message(embed=Embed(title=f"Updating socials", color=discord.Color.from_rgb(67, 157, 254)))
+        await interaction.response.send_message(embed=Embed(title=f"Updating socials", color=discord.Color.from_rgb(67, 157, 254)), ephemeral=True)
 
     @update.error
     async def commandUpdate_error(self, interaction: discord.Interaction, error: app_commands.AppCommandError):
@@ -112,7 +112,7 @@ class Social(commands.Cog, app_commands.Group, name="social"):
                 description=f"Please wait {timeRemaining} seconds before executing this command again!",
                 color=discord.Color.from_rgb(255, 0, 0),
             )
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
 
 
 async def setup(bot: commands.Bot):

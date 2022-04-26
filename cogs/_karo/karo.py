@@ -13,7 +13,7 @@ class Karo(commands.Cog):
     @app_commands.command(name="karo", description="Use Karo powers to turn the bot off")
     async def karo(self, interaction: discord.Interaction):
         if interaction.user.id == 356188517635981322 or interaction.user.id == 213715321742295040:
-            await interaction.response.send_message("Shutting down...")
+            await interaction.response.send_message("Shutting down...", ephemeral=True)
             print("Shutting down...")
             await self.bot.close()
         else:
@@ -22,7 +22,7 @@ class Karo(commands.Cog):
                 description=f"You are not allowed to use this command!",
                 color=discord.Color.from_rgb(255, 0, 0),
             )
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
 
 
 async def setup(bot: commands.Bot):

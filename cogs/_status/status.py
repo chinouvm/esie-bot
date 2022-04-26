@@ -24,7 +24,7 @@ class Status(commands.Cog):
                 else:
                     embed.add_field(name="Website: ", value=f"Offline ❌", inline=True)
             embed.set_thumbnail(url=f"{self.bot.user.avatar}")
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
             await session.close()
 
 
