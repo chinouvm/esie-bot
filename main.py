@@ -35,4 +35,4 @@ class MyBot(commands.Bot):
 
 
 bot = MyBot()
-bot.run(settings.TOKEN)
+bot.run(settings.DEVTOKEN)
