@@ -9,7 +9,7 @@ class MyBot(commands.Bot):
         super().__init__(
             command_prefix="!",
             intents=discord.Intents.all(),
-            application_id=settings.DEVID,
+            application_id=settings.APPID,
             activity=discord.Activity(type=discord.ActivityType.watching, name="www.esie.nl"),
         )
 
@@ -25,9 +25,8 @@ class MyBot(commands.Bot):
         await self.load_extension(f"cogs._gif.gif")
         await self.load_extension(f"cogs._programming.programming")
         await self.load_extension(f"cogs._poll.poll")
-        # await bot.tree.sync(guild=discord.Object(id=860153924899176478))
-        # await bot.tree.sync(guild=discord.Object(id=959010133273370664))
-        await bot.tree.sync(guild=discord.Object(id=968553036244987914))
+        await bot.tree.sync(guild=discord.Object(id=959010133273370664))
+        await bot.tree.sync(guild=discord.Object(id=860153924899176478))
 
         bot.remove_command("help")
 
@@ -36,4 +35,4 @@ class MyBot(commands.Bot):
 
 
 bot = MyBot()
-bot.run(settings.DEVTOKEN)
+bot.run(settings.TOKEN)
