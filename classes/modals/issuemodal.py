@@ -9,4 +9,4 @@ class PostIssue(Modal, title="Github Issue"):
 
     async def on_submit(self, interaction: discord.Interaction):
         embed = DefaultEmbed(title="Succesfully created a Github Issue", color=discord.Color.from_rgb(67, 157, 254))
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message(embed=embed, ephemeral=True)

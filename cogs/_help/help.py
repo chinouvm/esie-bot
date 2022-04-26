@@ -13,7 +13,7 @@ class Help(commands.Cog):
 
     @app_commands.command(name="help", description="pls help")
     async def help(self, interaction: discord.Interaction):
-        await interaction.response.send_message(embed=HelpEmbed(), view=HelpView())
+        await interaction.response.send_message(embed=HelpEmbed(), view=HelpView(), ephemeral=True)
 
 
 async def setup(bot: commands.Bot):

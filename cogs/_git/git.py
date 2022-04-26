@@ -55,7 +55,7 @@ class Git(commands.Cog, app_commands.Group, name="git"):
     @app_commands.checks.cooldown(1, 60, key=lambda i: (i.guild.id, i.user.id))
     async def issue(self, interaction: discord.Interaction):
         await interaction.response.send_message(
-            embed=Embed(title="Select one of the options", color=discord.Color.from_rgb(67, 157, 254)), view=PostIssueView()
+            embed=Embed(title="Select one of the options", color=discord.Color.from_rgb(67, 157, 254)), view=PostIssueView(), ephemeral=True
         )
 
     @issue.error
@@ -67,7 +67,7 @@ class Git(commands.Cog, app_commands.Group, name="git"):
                 description=f"Please wait {timeRemaining} seconds before executing this command again!",
                 color=discord.Color.from_rgb(255, 0, 0),
             )
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
 
 
 async def setup(bot: commands.Bot):
