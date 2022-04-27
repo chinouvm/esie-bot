@@ -14,17 +14,20 @@ jobs:
 
       - name: Echo secrets
         run: |
-          echo "$FWD"
-          echo APPID=${{ secrets.APPID }} > usr/src/bot/.env
-          echo DEVID=${{ secrets.DEVID }} > usr/src/bot/.env
-          echo TOKEN="${{ secrets.TOKEN }}" > usr/src/bot/.env
-          echo DEVTOKEN="${{ secrets.DEVTOKEN }}" > usr/src/bot/.env
-          echo GITTOKEN="${{ secrets.GITTOKEN }}" > usr/src/bot/.env
-          echo REDDIT_CLIENTID="${{ secrets.REDDIT_CLIENTID }}" > usr/src/bot/.env
-          echo REDDIT_CLIENTSECRET="${{ secrets.REDDIT_CLIENTSECRET }}" > usr/src/bot/.env
-          echo REDDIT_USERAGENT="${{ secrets.REDDIT_USERAGENT }}" > usr/src/bot/.env
-          echo TENORKEY="${{ secrets.TENORKEY }}" > usr/src/bot/.env
-          echo -e '${{secrets.FIREBASEKEY}}' >> usr/src/bot/key.json
+          cd ..
+          cd ..
+          cd src
+          cd bot
+          echo APPID=${{ secrets.APPID }} > .env
+          echo DEVID=${{ secrets.DEVID }} > .env
+          echo TOKEN="${{ secrets.TOKEN }}" > .env
+          echo DEVTOKEN="${{ secrets.DEVTOKEN }}" > .env
+          echo GITTOKEN="${{ secrets.GITTOKEN }}" > .env
+          echo REDDIT_CLIENTID="${{ secrets.REDDIT_CLIENTID }}" > .env
+          echo REDDIT_CLIENTSECRET="${{ secrets.REDDIT_CLIENTSECRET }}" > .env
+          echo REDDIT_USERAGENT="${{ secrets.REDDIT_USERAGENT }}" > .env
+          echo TENORKEY="${{ secrets.TENORKEY }}" > .env
+          echo -e '${{secrets.FIREBASEKEY}}' >> key.json
 
       - name: Build & Push Image
         run: |
