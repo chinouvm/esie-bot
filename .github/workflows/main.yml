@@ -14,6 +14,8 @@ jobs:
 
       - name: Echo secrets
         run: |
+          echo -e '${{secrets.FIREBASEKEY}}' >> key.json
+
           tee -a .env <<EOF
           APPID=${{ secrets.APPID }}
           DEVID=${{ secrets.DEVID }}
@@ -26,8 +28,8 @@ jobs:
           TENORKEY="${{ secrets.TENORKEY }}"
           EOF
 
-          echo -e '${{secrets.FIREBASEKEY}}' >> key.json
           cat .env
+          cat key.json
 
       - name: Build & Push Image
         run: |
