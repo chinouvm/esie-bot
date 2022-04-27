@@ -14,7 +14,6 @@ jobs:
 
       - name: Echo secrets
         run: |
-          pwd
           echo APPID=${{ secrets.APPID }} > .env
           echo DEVID=${{ secrets.DEVID }} > .env
           echo TOKEN="${{ secrets.TOKEN }}" > .env
@@ -29,5 +28,5 @@ jobs:
       - name: Build & Push Image
         run: |
           echo "${{secrets.DOCKERPW}}" | docker login -u "chinouvm" --password-stdin
-          docker image build -t chinouvm/esiebot:latest .
-          docker push chinouvm/esiebot:latest
+          docker image build -t chinouvm/esie-bot:latest .
+          docker push chinouvm/esie-bot:latest
