@@ -10,7 +10,7 @@ class MyBot(commands.Bot):
             command_prefix="!",
             intents=discord.Intents.all(),
             application_id=settings.APPID,
-            activity=discord.Activity(type=discord.ActivityType.listening, name="to /help"),
+            activity=discord.Activity(type=discord.ActivityType.watching, name="www.esie.nl"),
         )
 
     async def setup_hook(self):
