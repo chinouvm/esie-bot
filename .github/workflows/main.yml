@@ -14,7 +14,9 @@ jobs:
 
       - name: Echo secrets
         run: |
-          echo -e '${{secrets.FIREBASEKEY}}' >> key.json
+          tee -a key.json <<EOF
+          ${{secrets.FIREBASEKEY}}
+          EOF
 
           tee -a .env <<EOF
           APPID=${{ secrets.APPID }}
