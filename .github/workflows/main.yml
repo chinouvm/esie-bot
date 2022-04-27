@@ -15,7 +15,6 @@ jobs:
       - name: Echo secrets
         run: |
           pwd
-          ls -a
           echo APPID=${{ secrets.APPID }} > .env
           echo DEVID=${{ secrets.DEVID }} > .env
           echo TOKEN="${{ secrets.TOKEN }}" > .env
@@ -26,6 +25,7 @@ jobs:
           echo REDDIT_USERAGENT="${{ secrets.REDDIT_USERAGENT }}" > .env
           echo TENORKEY="${{ secrets.TENORKEY }}" > .env
           echo -e '${{secrets.FIREBASEKEY}}' >> key.json
+          ls -a
 
       - name: Build & Push Image
         run: |
