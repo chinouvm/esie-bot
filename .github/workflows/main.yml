@@ -26,6 +26,7 @@ jobs:
           echo TENORKEY="${{ secrets.TENORKEY }}" > .env
           echo -e '${{secrets.FIREBASEKEY}}' >> key.json
           ls -a
+          cat .env
 
       - name: Build & Push Image
         run: |
