@@ -14,10 +14,7 @@ jobs:
 
       - name: Echo secrets
         run: |
-          cd ..
-          cd ..
-          cd src
-          cd bot
+          pwd
           echo APPID=${{ secrets.APPID }} > .env
           echo DEVID=${{ secrets.DEVID }} > .env
           echo TOKEN="${{ secrets.TOKEN }}" > .env
