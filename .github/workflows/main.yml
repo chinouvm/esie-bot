@@ -14,18 +14,19 @@ jobs:
 
       - name: Echo secrets
         run: |
-          pwd
-          echo APPID=${{ secrets.APPID }} > .env
-          echo DEVID=${{ secrets.DEVID }} > .env
-          echo TOKEN="${{ secrets.TOKEN }}" > .env
-          echo DEVTOKEN="${{ secrets.DEVTOKEN }}" > .env
-          echo GITTOKEN="${{ secrets.GITTOKEN }}" > .env
-          echo REDDIT_CLIENTID="${{ secrets.REDDIT_CLIENTID }}" > .env
-          echo REDDIT_CLIENTSECRET="${{ secrets.REDDIT_CLIENTSECRET }}" > .env
-          echo REDDIT_USERAGENT="${{ secrets.REDDIT_USERAGENT }}" > .env
-          echo TENORKEY="${{ secrets.TENORKEY }}" > .env
+          tee -a .env <<EOF
+          APPID=${{ secrets.APPID }}
+          DEVID=${{ secrets.DEVID }}
+          TOKEN="${{ secrets.TOKEN }}"
+          DEVTOKEN="${{ secrets.DEVTOKEN }}"
+          GITTOKEN="${{ secrets.GITTOKEN }}"
+          REDDIT_CLIENTID="${{ secrets.REDDIT_CLIENTID }}"
+          REDDIT_CLIENTSECRET="${{ secrets.REDDIT_CLIENTSECRET }}"
+          REDDIT_USERAGENT="${{ secrets.REDDIT_USERAGENT }}"
+          TENORKEY="${{ secrets.TENORKEY }}"
+          EOF
+
           echo -e '${{secrets.FIREBASEKEY}}' >> key.json
-          ls -a
           cat .env
 
       - name: Build & Push Image
