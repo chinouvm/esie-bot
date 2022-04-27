@@ -10,7 +10,7 @@ class MyBot(commands.Bot):
             command_prefix="!",
             intents=discord.Intents.all(),
             application_id=settings.APPID,
-            activity=discord.Activity(type=discord.ActivityType.watching, name="www.esie.nl"),
+            activity=discord.Activity(type=discord.ActivityType.watching, name="for /help"),
         )
 
     async def setup_hook(self):
@@ -25,8 +25,7 @@ class MyBot(commands.Bot):
         await self.load_extension(f"cogs._gif.gif")
         await self.load_extension(f"cogs._programming.programming")
         await self.load_extension(f"cogs._poll.poll")
-        await bot.tree.sync(guild=discord.Object(id=959010133273370664))
-        await bot.tree.sync(guild=discord.Object(id=860153924899176478))
+        await bot.tree.sync(guild=discord.Object(id=968553036244987914))
 
         bot.remove_command("help")
 
