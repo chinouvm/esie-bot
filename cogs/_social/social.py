@@ -17,13 +17,20 @@ class Social(commands.Cog, app_commands.Group, name="social"):
         self.bot = bot
         super().__init__()
 
+    async def GetSocial(id):
+        try:
+            social = db.collection("users").document(str(id)).get()
+            return social
+        except:
+            return None
+
     @app_commands.command(
         name="set",
         description="set your own socials",
     )
     @app_commands.checks.cooldown(1, 60, key=lambda i: (i.guild.id, i.user.id))
     async def set(self, interaction: discord.Interaction):
-        await interaction.response.send_modal(SetSocialModal(), ephemeral=True)
+        await interaction.response.send_modal(SetSocialModal())
 
     @set.error
     async def commandSet_error(self, interaction: discord.Interaction, error: app_commands.AppCommandError):
@@ -43,8 +50,7 @@ class Social(commands.Cog, app_commands.Group, name="social"):
     @app_commands.describe(member="The username of the member you want to get socials from")
     @app_commands.checks.cooldown(1, 20, key=lambda i: (i.guild.id, i.user.id))
     async def get(self, interaction: discord.Interaction, member: discord.Member):
-        id = str(member.id)
-        userData = db.collection("users").document(id).get()
+        userData = await Social.GetSocial(member.id)
         if userData.exists:
 
             snapchat = userData.to_dict().get("snapchat")
