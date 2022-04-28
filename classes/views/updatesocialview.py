@@ -5,9 +5,9 @@ from classes.modals.socialmodal import UpdateSocialModal
 from database import db
 
 
-async def update_social(id, social, value):
-    data = {social: value}
-    db.collection("users").document(id).update(data)
+async def UpdateSocial(id, social: str, value: str):
+    data = {social: str(value)}
+    db.collection("users").document(str(id)).update(data)
 
 
 class UpdateSocialView(View):
@@ -26,15 +26,15 @@ class UpdateSocialView(View):
         await modal.wait()
 
         if select.values[0] == "insta":
-            await update_social(str(interaction.user.id), "insta", str(modal.updated.value))
+            await UpdateSocial(interaction.user.id, "insta", modal.updated.value)
         elif select.values[0] == "snap":
-            await update_social(str(interaction.user.id), "snapchat", str(modal.updated.value))
+            await UpdateSocial(interaction.user.id, "snapchat", modal.updated.value)
         elif select.values[0] == "spotify":
-            await update_social(str(interaction.user.id), "spotify", str(modal.updated.value))
+            await UpdateSocial(interaction.user.id, "spotify", modal.updated.value)
         elif select.values[0] == "snaplink":
-            await update_social(str(interaction.user.id), "snaplink", str(modal.updated.value))
+            await UpdateSocial(interaction.user.id, "snaplink", modal.updated.value)
         elif select.values[0] == "github":
-            await update_social(str(interaction.user.id), "github", str(modal.updated.value))
+            await UpdateSocial(interaction.user.id, "github", modal.updated.value)
 
         select.disabled = True
         await interaction.message.edit(view=self)
