@@ -8,7 +8,7 @@ Use the `/help` command to list all possible commands and get a description of t
 
 Help command in action:
 
-<img src="https://i.imgur.com/DhwC6pB.gif" width="500" />
+<img src="https://i.imgur.com/DhwC6pB.gif" width="907" />
 
 <br />
 <br />
