@@ -36,7 +36,7 @@ class Gif(commands.Cog, app_commands.Group, name="gif"):
                 "https://g.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search_term, settings.TENORKEY, amountOfTries)
             ) as response:
                 data = json.loads(await response.text())
-                randomNumber = randint(1, len(data["results"]))
+                randomNumber = randint(1, amountOfTries - 1)
                 gif = data["results"][randomNumber]["media"][0]["gif"]["url"]
                 await session.close()
                 return gif

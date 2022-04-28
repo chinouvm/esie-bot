@@ -38,10 +38,10 @@ class Git(commands.Cog, app_commands.Group, name="git"):
             view.add_item(profileButton)
             embed = DefaultEmbed(title=f"Github Profile Info", color=discord.Color.from_rgb(67, 157, 254))
             embed.add_field(name="Username:", value=f"{body.get('login')}", inline=True)
-            embed.add_field(name="Location:", value=f"{body.get('location')}", inline=True)
+            embed.add_field(name="Location:", value=f"{body.get('location')}", inline=False)
             embed.add_field(name="Followers:", value=f"{body.get('followers')}", inline=True)
             embed.add_field(name="Following:", value=f"{body.get('following')}", inline=True)
-            embed.add_field(name="Public Repos:", value=f"{body.get('public_repos')}", inline=True)
+            embed.add_field(name="Public Repos:", value=f"{body.get('public_repos')}", inline=False)
             embed.set_thumbnail(url=f"{body.get('avatar_url')}")
             await interaction.response.send_message(view=view, embed=embed)
         except:
