@@ -6,6 +6,10 @@ Esie Bot is a multipurpose discord bot created with python with the intention of
 
 Use the `/help` command to list all possible commands and get a description of them.
 
+Help command in action:
+
+<img src="https://i.imgur.com/DhwC6pB.gif" width="500" />
+
 <br />
 <br />
 <br />
