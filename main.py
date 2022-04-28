@@ -27,6 +27,7 @@ class MyBot(commands.Bot):
         await self.load_extension(f"cogs._poll.poll")
         await bot.tree.sync(guild=discord.Object(id=959010133273370664))
         await bot.tree.sync(guild=discord.Object(id=860153924899176478))
+        # await bot.tree.sync(guild=discord.Object(id=968553036244987914))
 
         bot.remove_command("help")
 
