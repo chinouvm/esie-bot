@@ -6,6 +6,7 @@ from classes.embeds.embed import DefaultEmbed
 from classes.embeds.gif_embed import GifEmbed
 from classes.embeds.git_embed import GitEmbed
 from classes.embeds.help_embed import HelpEmbed
+from classes.embeds.programming_embed import ProgrammingEmbed
 from classes.embeds.social_embed import SocialEmbed
 from classes.embeds.sourcecode_embed import SourceCodeEmbed
 from classes.embeds.status_embed import StatusEmbed
@@ -25,6 +26,7 @@ class HelpView(View):
             SelectOption(label="- Trash", value="5"),
             SelectOption(label="- Git", value="6"),
             SelectOption(label="- Status", value="7"),
+            SelectOption(label="- Programming", value="8"),
         ],
     )
     async def select_callback(self, interaction, select):
@@ -44,3 +46,5 @@ class HelpView(View):
             await interaction.response.edit_message(embed=GitEmbed())
         elif select.values[0] == "7":
             await interaction.response.edit_message(embed=StatusEmbed())
+        elif select.values[0] == "8":
+            await interaction.response.edit_message(embed=ProgrammingEmbed())
