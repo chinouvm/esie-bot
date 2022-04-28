@@ -20,7 +20,9 @@ jobs:
 
           tee -a .env <<EOF
           APPID=${{ secrets.APPID }}
+          DEVID=${{secrets.DEVID}}
           TOKEN="${{ secrets.TOKEN }}"
+          DEVTOKEN="${{secrets.DEVTOKEN}}"
           GITTOKEN="${{ secrets.GITTOKEN }}"
           REDDIT_CLIENTID="${{ secrets.REDDIT_CLIENTID }}"
           REDDIT_CLIENTSECRET="${{ secrets.REDDIT_CLIENTSECRET }}"
